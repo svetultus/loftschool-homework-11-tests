@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Counter соответсвует snapshot'у 1`] = `
+Array [
+  <div
+    className="t-counter"
+    data-testid="counter"
+  >
+    0
+  </div>,
+  <button
+    className="t-btn-increment"
+    data-testid="btn-increment"
+    onClick={[Function]}
+  >
+    Increment
+  </button>,
+  <button
+    className="t-btn-decrement"
+    data-testid="btn-decrement"
+    onClick={[Function]}
+  >
+    Decrement
+  </button>,
+]
+`;
