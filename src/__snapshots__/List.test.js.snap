@@ -18,3 +18,22 @@ Array [
   </button>,
 ]
 `;
+
+exports[`List соответствует snapshot'у 1`] = `
+Array [
+  <ul
+    data-testid="list"
+  />,
+  <input
+    data-testid="input"
+    onChange={[Function]}
+    value=""
+  />,
+  <button
+    data-testid="button"
+    onClick={[Function]}
+  >
+    Add item
+  </button>,
+]
+`;

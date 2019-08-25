@@ -12,9 +12,6 @@ import ReactDOM from "react-dom";
 import List from "./List";
 import renderer from "react-test-renderer";
 import { render, fireEvent } from "@testing-library/react";
-const domTestingLib = require("@testing-library/dom");
-const { queryHelpers } = domTestingLib;
-const queryByTagName = (...args) => queryHelpers.queryAllByTagName(...args);
 
 it("renders without crashing", () => {
   const div = document.createElement("div");
@@ -23,25 +20,42 @@ it("renders without crashing", () => {
 });
 
 describe("List", () => {
-  it("соответсвует snapshot'у", () => {
+  it("соответствует snapshot'у", () => {
     expect(renderer.create(<List />)).toMatchSnapshot();
   });
 
-  it("добавляет значение input в List", () => {
+  it("добавляет одно значение input в List", () => {
     const wrapper = render(<List />);
 
     fireEvent.change(wrapper.queryByTestId("input"), {
       target: { value: "1000 чертей" }
     });
     fireEvent.click(wrapper.queryByTestId("button"));
-    expect(wrapper.queryByText("1000 чертей")).toBeTruthy;
+    expect(wrapper.queryByText("1000 чертей")).toBeTruthy();
     expect(wrapper.queryByTestId("list").children.length).toBe(1);
+  });
+
+  it("очищает значение input после добавления нового элемента в список", () => {
+    const wrapper = render(<List />);
+
+    fireEvent.change(wrapper.queryByTestId("input"), {
+      target: { value: "1000 чертей" }
+    });
+    fireEvent.click(wrapper.queryByTestId("button"));
     expect(wrapper.queryByTestId("input").value).toBe("");
+  });
+
+  it("добавляет несколько значений input в List", () => {
+    const wrapper = render(<List />);
+    fireEvent.change(wrapper.queryByTestId("input"), {
+      target: { value: "1000 чертей" }
+    });
+    fireEvent.click(wrapper.queryByTestId("button"));
     fireEvent.change(wrapper.queryByTestId("input"), {
       target: { value: "2000 чертей" }
     });
     fireEvent.click(wrapper.queryByTestId("button"));
-    expect(wrapper.queryByText("2000 чертей")).toBeTruthy;
+    expect(wrapper.queryByTestId("list").children.length).toBe(2);
     expect(wrapper.queryByTestId("input").value).toBe("");
   });
 
