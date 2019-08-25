@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`List соответсвует snapshot'у 1`] = `
+Array [
+  <ul
+    data-testid="list"
+  />,
+  <input
+    data-testid="input"
+    onChange={[Function]}
+    value=""
+  />,
+  <button
+    data-testid="button"
+    onClick={[Function]}
+  >
+    Add item
+  </button>,
+]
+`;
+
+exports[`List соответствует snapshot'у 1`] = `
+Array [
+  <ul
+    data-testid="list"
+  />,
+  <input
+    data-testid="input"
+    onChange={[Function]}
+    value=""
+  />,
+  <button
+    data-testid="button"
+    onClick={[Function]}
+  >
+    Add item
+  </button>,
+]
+`;

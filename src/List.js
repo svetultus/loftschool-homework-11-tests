@@ -1,10 +1,10 @@
 import React, { useState, useReducer } from "react";
 
-const ADD_ITEM = "add_item"
-const REMOVE_ITEM = "remove_item"
+const ADD_ITEM = "add_item";
+const REMOVE_ITEM = "remove_item";
 
-const addItem = (item) => ({type: ADD_ITEM, payload: item})
-const removeItem = (item) => ({type: REMOVE_ITEM, payload: item})
+const addItem = item => ({ type: ADD_ITEM, payload: item });
+const removeItem = item => ({ type: REMOVE_ITEM, payload: item });
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -17,7 +17,7 @@ const reducer = (state, action) => {
   }
 };
 
-export const List = () => {
+function List() {
   const [state, dispatch] = useReducer(reducer, []);
   const [text, setText] = useState("");
 
@@ -29,7 +29,7 @@ export const List = () => {
     if (text && !state.includes(text)) {
       dispatch(addItem(text));
     }
-    setText('');
+    setText("");
   };
 
   const onRemove = value => () => {
@@ -38,15 +38,18 @@ export const List = () => {
 
   return (
     <>
-      <ul>
+      <ul data-testid="list">
         {state.map(item => (
           <li key={item} onClick={onRemove(item)}>
             {item}
           </li>
         ))}
       </ul>
-      <input value={text} onChange={updateText} />
-      <button onClick={onAdd}>Add item</button>
+      <input value={text} onChange={updateText} data-testid="input" />
+      <button onClick={onAdd} data-testid="button">
+        Add item
+      </button>
     </>
   );
-};
+}
+export default List;
